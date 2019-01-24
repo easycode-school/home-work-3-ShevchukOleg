@@ -10,13 +10,14 @@
 function addItemInfoDecorator(target: Object, method: string, descriptor: PropertyDescriptor): void {
   let mainMethod = descriptor.value;
   descriptor.value = function(){
-    this.date = new Date;
+    this.date = new Date();
     this.info = `${this.name}-${this.price}`
     let origResult = mainMethod.apply(this);
     return origResult;
   }
 
 }
+
 
 class Item {
     public price: number;
@@ -63,7 +64,7 @@ function shangeClass(type: string) {
                 this.name = name;
                 this.age = age;
                 this.type = type;
-                this.createDate = new Date;
+                this.createDate = new Date();
             }
             getUserInfo(){
             return this;
@@ -111,7 +112,7 @@ namespace USA {
 
                                             // News api Ukraine
 namespace Ua {
-    interface INews2 {
+    export interface INews {
         uuid: string;
         title: string;
         body: string;
@@ -120,7 +121,7 @@ namespace Ua {
         imgUrl: string;
     }
 
-    class NewsService2 {
+    export class NewsService {
         protected apiurl: string = 'https://news_api_2_url'
         public getNews() {} // method get all news
         public addToFavorite() {} // method add to favorites
@@ -175,8 +176,8 @@ function applyMixins (targetClass: any, baseClasses: any[]) {
     baseClasses.forEach((baseClass) => {
         Object.getOwnPropertyNames(baseClass.prototype).forEach((propName) => {
             targetClass.prototype[propName] = baseClass.prototype[propName]; 
-        })
-    })
+        });
+    });
 }
 
 

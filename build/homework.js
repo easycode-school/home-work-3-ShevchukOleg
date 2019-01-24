@@ -18,7 +18,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 function addItemInfoDecorator(target, method, descriptor) {
     let mainMethod = descriptor.value;
     descriptor.value = function () {
-        this.date = new Date;
+        this.date = new Date();
         this.info = `${this.name}-${this.price}`;
         let origResult = mainMethod.apply(this);
         return origResult;
@@ -62,7 +62,7 @@ function shangeClass(type) {
                 this.name = name;
                 this.age = age;
                 this.type = type;
-                this.createDate = new Date;
+                this.createDate = new Date();
             }
             getUserInfo() {
                 return this;
@@ -104,13 +104,14 @@ var USA;
 // News api Ukraine
 var Ua;
 (function (Ua) {
-    class NewsService2 {
+    class NewsService {
         constructor() {
             this.apiurl = 'https://news_api_2_url';
         }
         getNews() { } // method get all news
         addToFavorite() { } // method add to favorites
     }
+    Ua.NewsService = NewsService;
 })(Ua || (Ua = {}));
 //  Task 4
 class Junior {
